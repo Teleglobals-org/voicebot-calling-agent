@@ -1,0 +1,235 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T11:00:00.000Z" agent="Kiro" version="21.0.0">
+  <diagram name="Voice Bot Architecture" id="voice-bot-arch">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1700" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="AWS Multilingual Voice Bot Architecture" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=22;fontStyle=1;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="310" y="20" width="500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="English / Hindi / Marathi — Real-Time Property Search Agent" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=13;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="350" y="58" width="400" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════════════════════════════════════════════════ -->
+        <!-- Layer 1: User -->
+        <!-- ═══════════════════════════════════════════════════ -->
+        <mxCell id="layer1-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#BDBDBD;dashed=1;dashPattern=5 5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="95" width="1020" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="layer1-label" value="User Layer" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#757575;" vertex="1" parent="1">
+          <mxGeometry x="65" y="100" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Phone Icon (AWS Mobile Client) -->
+        <mxCell id="phone" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3E;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.mobile_client;" vertex="1" parent="1">
+          <mxGeometry x="530" y="120" width="41" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="phone-label" value="&lt;b&gt;Voice Call&lt;/b&gt;&lt;br&gt;PSTN / SIP&lt;br&gt;(EN / HI / MR)" style="text;html=1;align=center;verticalAlign=top;resizable=0;points=[];strokeColor=none;fillColor=none;fontSize=10;fontColor=#424242;" vertex="1" parent="1">
+          <mxGeometry x="590" y="125" width="100" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════════════════════════════════════════════════ -->
+        <!-- Layer 2: Twilio (External) -->
+        <!-- ═══════════════════════════════════════════════════ -->
+        <mxCell id="layer2-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#66BB6A;dashed=1;dashPattern=5 5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="225" width="1020" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="layer2-label" value="External Service" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#2E7D32;" vertex="1" parent="1">
+          <mxGeometry x="65" y="230" width="110" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Twilio Icon -->
+        <mxCell id="twilio-icon" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.general_multimedia;" vertex="1" parent="1">
+          <mxGeometry x="430" y="260" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="twilio-text" value="&lt;b&gt;Twilio Voice&lt;/b&gt;&lt;br&gt;• Speech-to-Text (Gather API)&lt;br&gt;• Text-to-Speech (Polly.Aditi)&lt;br&gt;• Call Routing &amp; Management" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];strokeColor=none;fillColor=none;fontSize=10;fontColor=#1B5E20;" vertex="1" parent="1">
+          <mxGeometry x="490" y="255" width="220" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Phone to Twilio -->
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#424242;strokeWidth=2;" edge="1" parent="1" source="phone" target="twilio-icon">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════════════════════════════════════════════════ -->
+        <!-- Layer 3: API Gateway -->
+        <!-- ═══════════════════════════════════════════════════ -->
+        <mxCell id="layer3-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FFA726;dashed=1;dashPattern=5 5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="375" width="1020" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="layer3-label" value="AWS — API Layer" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#E65100;" vertex="1" parent="1">
+          <mxGeometry x="65" y="380" width="120" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- API Gateway Icon -->
+        <mxCell id="apigw-icon" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;" vertex="1" parent="1">
+          <mxGeometry x="430" y="405" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="apigw-text" value="&lt;b&gt;Amazon API Gateway&lt;/b&gt;&lt;br&gt;HTTPS POST Endpoint&lt;br&gt;Routes Twilio Webhooks" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];strokeColor=none;fillColor=none;fontSize=10;fontColor=#BF360C;" vertex="1" parent="1">
+          <mxGeometry x="490" y="405" width="200" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Twilio to API GW -->
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#424242;strokeWidth=2;" edge="1" parent="1" source="twilio-icon" target="apigw-icon">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow2-label" value="HTTPS POST (SpeechResult)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#666666;" vertex="1" connectable="0" parent="arrow2">
+          <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Return Arrow: API GW to Twilio -->
+        <mxCell id="arrow-return" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#7B1FA2;strokeWidth=1.5;dashed=1;" edge="1" parent="1" source="apigw-icon" target="twilio-icon">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="350" y="429" /><mxPoint x="350" y="284" /></Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow-return-label" value="TwiML XML Response" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#7B1FA2;" vertex="1" connectable="0" parent="arrow-return">
+          <mxGeometry x="-0.3" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- ═══════════════════════════════════════════════════ -->
+        <!-- Layer 4: Compute -->
+        <!-- ═══════════════════════════════════════════════════ -->
+        <mxCell id="layer4-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FFB300;dashed=1;dashPattern=5 5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="515" width="1020" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="layer4-label" value="AWS — Compute Layer" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#F57F17;" vertex="1" parent="1">
+          <mxGeometry x="65" y="520" width="150" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Bridge Lambda Icon -->
+        <mxCell id="bridge-icon" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1" parent="1">
+          <mxGeometry x="180" y="555" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="bridge-text" value="&lt;b&gt;Bridge Lambda&lt;/b&gt;&lt;br&gt;&lt;br&gt;• TwiML XML Generation&lt;br&gt;• Session State (DynamoDB)&lt;br&gt;• Polly Voice Selection&lt;br&gt;• No-Input Retry (max 3)&lt;br&gt;• Invokes Bot Lambda" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];strokeColor=none;fillColor=none;fontSize=10;fontColor=#424242;" vertex="1" parent="1">
+          <mxGeometry x="240" y="545" width="180" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Bot Lambda Icon -->
+        <mxCell id="bot-icon" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1" parent="1">
+          <mxGeometry x="650" y="555" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="bot-text" value="&lt;b&gt;Bot Lambda&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Language Detection (Keywords)&lt;br&gt;• Mid-Call Language Switching&lt;br&gt;• Conversation State Machine&lt;br&gt;• Field Extraction (Regex + LLM)&lt;br&gt;• Property Search Engine&lt;br&gt;• Translation Pipeline" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];strokeColor=none;fillColor=none;fontSize=10;fontColor=#424242;" vertex="1" parent="1">
+          <mxGeometry x="710" y="545" width="220" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- DynamoDB Icon -->
+        <mxCell id="dynamo-icon" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#C925D1;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;" vertex="1" parent="1">
+          <mxGeometry x="180" y="720" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="dynamo-text" value="&lt;b&gt;Amazon DynamoDB&lt;/b&gt;&lt;br&gt;Session Storage&lt;br&gt;Key: call_sid → state&lt;br&gt;TTL: 24 hours" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];strokeColor=none;fillColor=none;fontSize=10;fontColor=#424242;" vertex="1" parent="1">
+          <mxGeometry x="240" y="720" width="170" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: API GW to Bridge -->
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#424242;strokeWidth=2;" edge="1" parent="1" source="apigw-icon" target="bridge-icon">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Bridge to Bot -->
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#424242;strokeWidth=2;" edge="1" parent="1" source="bridge-icon" target="bot-icon">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="204" y="620" /><mxPoint x="560" y="620" /><mxPoint x="560" y="579" /></Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow4-label" value="Lambda Invoke (JSON)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#666666;" vertex="1" connectable="0" parent="arrow4">
+          <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Arrow: Bridge to DynamoDB -->
+        <mxCell id="arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#7B1FA2;strokeWidth=1.5;" edge="1" parent="1" source="bridge-icon" target="dynamo-icon">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow5-label" value="Get / Put / Delete" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#7B1FA2;" vertex="1" connectable="0" parent="arrow5">
+          <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- ═══════════════════════════════════════════════════ -->
+        <!-- Layer 5: AI/ML Services -->
+        <!-- ═══════════════════════════════════════════════════ -->
+        <mxCell id="layer5-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#42A5F5;dashed=1;dashPattern=5 5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="845" width="1020" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="layer5-label" value="AWS — AI/ML Layer" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#0D47A1;" vertex="1" parent="1">
+          <mxGeometry x="65" y="850" width="130" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Bedrock Icon -->
+        <mxCell id="bedrock-icon" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#01A88D;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sagemaker;" vertex="1" parent="1">
+          <mxGeometry x="120" y="885" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="bedrock-text" value="&lt;b&gt;Amazon Bedrock&lt;/b&gt;&lt;br&gt;Claude 3.5 Haiku&lt;br&gt;Field Extraction&lt;br&gt;(when regex fails)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];strokeColor=none;fillColor=none;fontSize=10;fontColor=#0D47A1;" vertex="1" parent="1">
+          <mxGeometry x="175" y="880" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Translate Icon -->
+        <mxCell id="translate-icon" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#007FAA;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.translate;" vertex="1" parent="1">
+          <mxGeometry x="450" y="885" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="translate-text" value="&lt;b&gt;AWS Translate&lt;/b&gt;&lt;br&gt;Hindi/Marathi ↔ English&lt;br&gt;Reply Translation" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];strokeColor=none;fillColor=none;fontSize=10;fontColor=#0D47A1;" vertex="1" parent="1">
+          <mxGeometry x="505" y="885" width="160" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Polly Icon -->
+        <mxCell id="polly-icon" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#007FAA;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.polly;" vertex="1" parent="1">
+          <mxGeometry x="800" y="885" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="polly-text" value="&lt;b&gt;Amazon Polly&lt;/b&gt;&lt;br&gt;(via Twilio)&lt;br&gt;Voice: Aditi&lt;br&gt;en-IN / hi-IN" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];strokeColor=none;fillColor=none;fontSize=10;fontColor=#0D47A1;" vertex="1" parent="1">
+          <mxGeometry x="855" y="880" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Bot to Bedrock -->
+        <mxCell id="arrow6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#01A88D;strokeWidth=1.5;" edge="1" parent="1" source="bot-icon" target="bedrock-icon">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="674" y="870" /><mxPoint x="144" y="870" /></Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow6-label" value="Process Prompt" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#01A88D;" vertex="1" connectable="0" parent="arrow6">
+          <mxGeometry x="-0.3" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Arrow: Bot to Translate -->
+        <mxCell id="arrow7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#007FAA;strokeWidth=1.5;" edge="1" parent="1" source="bot-icon" target="translate-icon">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="674" y="860" /><mxPoint x="474" y="860" /></Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow7-label" value="Translate Text" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#007FAA;" vertex="1" connectable="0" parent="arrow7">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- ═══════════════════════════════════════════════════ -->
+        <!-- Layer 6: Data Storage -->
+        <!-- ═══════════════════════════════════════════════════ -->
+        <mxCell id="layer6-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#66BB6A;dashed=1;dashPattern=5 5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1015" width="1020" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="layer6-label" value="AWS — Data Layer" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#1B5E20;" vertex="1" parent="1">
+          <mxGeometry x="65" y="1020" width="130" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- S3 Icon -->
+        <mxCell id="s3-icon" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#3F8624;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1" parent="1">
+          <mxGeometry x="430" y="1050" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="s3-text" value="&lt;b&gt;Amazon S3&lt;/b&gt;&lt;br&gt;&lt;br&gt;Real Estate Datasets:&lt;br&gt;• mumbai.csv (9,514 rows)&lt;br&gt;• gurgaon_10k.csv • hyderabad.csv • kolkata.csv&lt;br&gt;• AMENITIES.csv • PROPERTY_TYPE.csv" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];strokeColor=none;fillColor=none;fontSize=10;fontColor=#1B5E20;" vertex="1" parent="1">
+          <mxGeometry x="490" y="1040" width="320" height="85" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Bot to S3 -->
+        <mxCell id="arrow9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#3F8624;strokeWidth=1.5;" edge="1" parent="1" source="bot-icon" target="s3-icon">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="900" y="579" /><mxPoint x="900" y="1074" /></Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow9-label" value="S3 GetObject&lt;br&gt;(Query Datasets)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#3F8624;" vertex="1" connectable="0" parent="arrow9">
+          <mxGeometry x="0.5" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
