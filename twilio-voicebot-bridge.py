@@ -7,6 +7,7 @@ import hashlib
 import urllib.parse
 from xml.etree.ElementTree import Element, SubElement, tostring
 
+
 # ── AWS Clients ───────────────────────────────────────────────
 lambda_client = boto3.client('lambda', region_name='us-east-1')
 dynamodb      = boto3.resource('dynamodb', region_name='us-east-1')
